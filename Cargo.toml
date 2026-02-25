@@ -1,0 +1,42 @@
+[package]
+name = "reson-agent"
+version = "0.1.0"
+edition = "2021"
+authors = ["Sovereign Shell"]
+description = "High-speed WASM Nanobot for Energy-Based Scheduling and Resonance Pulse assessment."
+
+[lib]
+# Required for WASM: Tells Rust to build a dynamic library that JS can load
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# The bridge between Rust and JS/beebee
+wasm-bindgen = "0.2"
+
+# 2026 standard for ultra-fast, direct conversion between Rust types and JS objects
+# This is much faster than standard JSON parsing for your 140 biomarkers
+serde-wasm-bindgen = "0.6"
+
+# Core serialization for your Energy-Weights and NEAT-HOP configurations
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Minimal logging that pipes directly to the browser/phone console
+console_error_panic_hook = "0.1"
+
+# Web APIs: Enabling high-resolution timing and local storage for the Life-Strap data
+[dependencies.web-sys]
+version = "0.3"
+features = [
+  "console",
+  "Performance",
+  "Window",
+  "Storage"
+]
+
+# Optimization Profile: Essential for the 45MB "Nanobot" footprint
+[profile.release]
+opt-level = "z"      # Optimize for minimal binary size
+lto = true           # Enable Link Time Optimization
+codegen-units = 1    # Allow for better optimization at the cost of compile time
+panic = "abort"      # Reduce size by removing stack unwinding
