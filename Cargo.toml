@@ -1,6 +1,6 @@
 [package]
 name = "reson-agent"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Sovereign Shell"]
 description = "High-speed WASM Nanobot for Energy-Based Scheduling and Resonance Pulse assessment."
